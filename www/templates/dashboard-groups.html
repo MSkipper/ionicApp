@@ -1,0 +1,12 @@
+<ion-view title="Groups" ng-controller="GroupDashboardCtrl as vm">
+  <ion-content padding="true">
+    <div ng-if="vm.groups.length === 0" class="bar bar-header bar-assertive">
+      <h1 class="title">Nie jesteś zapisany w żadnej grupie</h1>
+    </div>
+    <ion-list ng-repeat="group in vm.groups">
+        <div class=" item bar bar-header bar-balanced" ng-click="vm.go(group.id)">
+          <h1 class="title">{{group.name}}</h1>
+        </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

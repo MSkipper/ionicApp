@@ -1,0 +1,45 @@
+<ion-view title="Registry" ng-controller="RegisterCtrl as vm">
+  <header class="bar bar-header bar-positive">
+    <h1 class="title">Registry</h1>
+  </header>
+
+  <ion-content class="has-header padding">
+    <form name="authorizationForm" novalidate="" ng-submit="vm.registry(authorizationForm)">
+
+      <div class="list">
+
+        <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.email.$invalid && authorizationForm.$submitted,
+        'no-errors' : authorizationForm.email.$valid && authorizationForm.$submitted}">
+          <span class="input-label">Email:</span>
+          <input type="text" name="email" ng-model="vm.authorization.email" ng-minlength="5" ng-maxlength="30" required>
+        </label>
+
+        <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.password.$invalid && authorizationForm.$submitted, 'no-errors' : authorizationForm.password.$valid  && authorizationForm.$submitted}">
+          <span class="input-label">Password:</span>
+          <input type="password" name="password" ng-model="vm.authorization.password" ng-minlength="5" ng-maxlength="20" required>
+        </label>
+
+
+        <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.name.$invalid && authorizationForm.$submitted,
+        'no-errors' : authorizationForm.name.$valid && authorizationForm.$submitted}">
+          <span class="input-label">Name:</span>
+          <input type="text" name="text" ng-model="vm.authorization.name" ng-minlength="5" ng-maxlength="30" required>
+        </label>
+
+        <label class="item item-input" ng-class="{ 'has-errors' : authorizationForm.surname.$invalid && authorizationForm.$submitted,
+        'no-errors' : authorizationForm.surname.$valid && authorizationForm.$submitted}">
+          <span class="input-label">Surname:</span>
+          <input type="text" name="text" ng-model="vm.authorization.surname" ng-minlength="5" ng-maxlength="30" required>
+        </label>
+
+      </div>
+
+      <button class="button button-full button-positive" type="submit">
+        Sign Up
+      </button>
+
+    </form>
+
+  </ion-content>
+
+</ion-view>

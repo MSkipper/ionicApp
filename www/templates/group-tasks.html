@@ -1,0 +1,54 @@
+<ion-view title="Tasks" ng-controller="TasksGroupCtrl as vm">
+  <header class="bar bar-header bar-positive">
+    <button ui-sref="dashboard.groups" class="button button-icon button-clear ion-arrow-left-c" >
+    </button>
+    <h1 class="title">{{vm.group.name}}</h1>
+  </header>
+  <ion-content padding="true">
+    <div ng-if="vm.tasks.empty" class="bar bar-header bar-assertive">
+      <h1 class="title">You have not got any tasks</h1>
+    </div>
+    <div class="list list-inset" ng-show="vm.tasks.length > 0">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="query">
+      </label>
+    </div>
+    <ion-list>
+      <div class="card list"  ng-repeat="task in vm.tasks | filter: query ">
+        <div class="item item-avatar" ng-click="vm.showDetails(task.id)" ng-class="{'redClass': task.status == 1 , 'greenClass': task.status == 2}">
+          <h2 class="title">{{task.name}}</h2>
+          <p>Assigned to: {{task.assignedTo}}</p>
+        </div>
+        <div class="item item-body" ng-show="vm.showElement == task.id">
+          <div class="button-bar">
+            <a class="button" ng-class="{'selected-btn': task.status == 0}" ng-click="vm.status(0, task.id)">To do</a>
+            <a class="button" ng-class="{'selected-btn': task.status == 1}" ng-click="vm.status(1, task.id)">On Going</a>
+            <a class="button" ng-class="{'selected-btn': task.status == 2}" ng-click="vm.status(2, task.id)">Done</a>
+          </div>
+            <p>Description: {{task.description}}</p>
+            <hr />
+          <div>
+            <div class="list card" ng-repeat="comment in vm.comments ">
+              <div class="item item-avatar">
+                <img src="">
+                <h2>Add By: {{comment.addBy}}</h2>
+                <p>Date: {{comment.dateAdd | date : format : 'shortTime'}}</p>
+              </div>
+              <div class="item item-body">
+                <p>{{comment.content}}</p>
+              </div>
+            </div>
+            <form name="addCommentForm" novalidate="" ng-submit="vm.addComment(addCommentForm, task.id)">
+            <label class="item item-input">
+              <textarea placeholder="Comments" ng-model="vm.addCommentForm.comment"></textarea>
+            </label>
+              <button class="button button-full button-positive" type="submit">
+                Add Comment
+              </button>
+            </form>
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-view>

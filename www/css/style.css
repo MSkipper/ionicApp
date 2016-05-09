@@ -1,0 +1,77 @@
+ion-content {
+  margin-bottom: 50px !important;
+}
+
+.no-border {
+  border: none;
+}
+
+.user {
+  font-weight: bold;
+}
+
+.current-user {
+  float: left;
+  clear: both;
+}
+
+.not-current-user {
+  float: right;
+  clear: both;
+}
+
+.current-user .details {
+  background-color: #72CBFF;
+}
+
+.not-current-user .details {
+  background-color: #DCDCDC;
+}
+
+.error-container {
+  margin: 5px 0;
+}
+
+.error-container:last-child {
+  margin: 5px 0 0;
+}
+
+.error {
+  padding: 10px 16px;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #555;
+  vertical-align: middle;
+}
+
+.error i {
+  font-size: 24px;
+  color: #B83E2C;
+  vertical-align: middle;
+}
+
+.last-error-container > .error {
+  padding: 10px 16px 0;
+}
+
+.has-errors {
+  border-bottom: 3px solid #B83E2C;
+}
+
+.no-errors {
+  border-bottom: 3px solid green;
+}
+
+.redClass {
+  background-color: rgba(255, 49, 40, 0.37)
+}
+
+.greenClass {
+  background-color: rgba(2, 128, 0, 0.42)
+}
+
+.selected-btn {
+  background-color: rgba(49, 51, 54, 0.38);
+
+}
