@@ -1,8 +1,6 @@
 angular.module('projectApp')
     .controller('MainCtrl', function($scope, $state, Account, apiService, $ionicPopup) {
       var vm = this;
-      //Should redirect to dashboard When user is loggIN
-
 
       vm.login = function(form) {
         if (form.$valid) {
@@ -13,7 +11,7 @@ angular.module('projectApp')
           $state.go('dashboard.groups');
         }, function (res) {
           $ionicPopup.alert({
-            title: "Podane dane są nieprawidłowe"
+            title: "The data is incorrect. Please enter the correct data"
           });
         });
         }

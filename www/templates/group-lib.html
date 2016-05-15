@@ -15,23 +15,23 @@
     <form name="addLinkForm" novalidate="" ng-submit="vm.addLink(addLinkForm)">
       <div class="list">
         <label class="item item-input" ng-class="{ 'has-errors' : addLinkForm.name.$invalid && addLinkForm.$submitted,
-        'no-errors' : addLinkForm.add.$valid && addLinkForm.$submitted}">
+        'no-errors' : addLinkForm.name.$valid && addLinkForm.$submitted}">
           <span class="input-label">What is it:</span>
           <input type="text" name="name" ng-model="vm.addLinkForm.name" ng-minlength="8" ng-maxlength="60" required>
         </label>
 
-        <div class="error-container" ng-show="addTaskForm.name.$error" ng-messages="addLinkForm.name.$error">
-          <div></div>
+        <div class="error-container" ng-show="addLinkForm.name.$invalid && addLinkForm.$submitted" >
+          <div>Enter the correct description</div>
         </div>
 
-        <label class="item item-input" ng-class="{ 'has-errors' : addLinkForm.name.$invalid && addLinkForm.$submitted,
-        'no-errors' : addLinkForm.add.$valid && addLinkForm.$submitted}">
+        <label class="item item-input" ng-class="{ 'has-errors' : addLinkForm.link.$invalid && addLinkForm.$submitted,
+        'no-errors' : addLinkForm.link.$valid && addLinkForm.$submitted}">
           <span class="input-label">Link:</span>
-          <input type="text" name="link" ng-model="vm.addLinkForm.link" ng-minlength="8" ng-maxlength="60" required>
+          <input type="text" name="link" ng-model="vm.addLinkForm.link" ng-pattern="/^(https?:\/\/)([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w\#\:\?\=\.-]*)*\/?$/" ng-minlength="8" ng-maxlength="60" required>
         </label>
 
-        <div class="error-container" ng-show="addLinkForm.link.$error" ng-messages="addLinkForm.link.$error">
-          <div></div>
+        <div class="error-container" ng-show="addLinkForm.link.$invalid && addLinkForm.$submitted">
+          <div>Enter the correct link</div>
         </div>
 
         <button class="button button-full button-positive" type="submit">

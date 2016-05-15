@@ -1,16 +1,20 @@
 <ion-view title="Profile" ng-controller="ProfileDashboardCtrl as vm">
+  <header class="bar bar-header bar-positive">
+    <h1 class="title">Profile</h1>
+    <button ui-sref="about" class="button button-icon button-clear ion-information" >
+    </button>
+  </header>
   <ion-content padding="true">
     <div class="card">
       <div class="item item-divider">
         Account details
       </div>
       <div class="item item-thumbnail-left">
-      <img ng-src="http://www.bubbalicious.co.uk/images/avatar-small.jpg"/>
+      <img ng-src="{{vm.avatar(vm.currentUser.avatar)}}" ng-click="vm.changeAvatar(vm.currentUser.avatar,vm.currentUser.id )"/>
       <p>Name: {{vm.currentUser.firstName}}</p>
       <p>Surname: {{vm.currentUser.lastName}}</p>
       <p>Email: {{vm.currentUser.email}}</p>
       <p>User ID: {{vm.currentUser.id}}</p>
-      <!--<p>Created: {{currentUser.created | date:'medium'}}</p>-->
     </div>
     </div>
     <button class="button button-block button-energized icon ion-log-out" ng-click="vm.logout()">

@@ -1,14 +1,6 @@
 angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io', 'angularMoment', 'lbServices'])
 
 .run(function($ionicPlatform, Account,  $ionicPopup, $state) {
-  if (Account.getCachedCurrent() === null) {
-    Account.getCurrent().$promise
-      .then(function(res){
-        $state.go('dashboard.groups');
-      }, function(res){
-
-      })
-  }
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -40,6 +32,12 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
 
   .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
+
+      .state('loading', {
+        url: '/loading',
+        templateUrl: 'templates/loading.html',
+        controller: 'LoadingCtrl'
+      })
 
       .state('login', {
         url: '/login',
@@ -141,6 +139,13 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
         }
       })
 
+      .state('about', {
+        url: '/about',
+        cache: true,
+        templateUrl: 'templates/about.html'
+
+      })
+
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/login');
+    $urlRouterProvider.otherwise('/loading');
   })

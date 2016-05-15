@@ -12,7 +12,7 @@ if (typeof module !== 'undefined' && typeof exports !== 'undefined' && module.ex
 (function(window, angular, undefined) {'use strict';
 
 var urlBase = "http://92.222.83.249:3000/api";
-var authHeader = 'X-Access-Token';
+var authHeader = 'authorization';
 
 function getHost(url) {
   var m = url.match(/^(?:https?:)?\/\/([^\/]+)/);
@@ -2267,12 +2267,6 @@ module.factory(
           url: urlBase + "/Groups/:id/tasks/count",
           method: "GET"
         },
-
-        // INTERNAL. Use Comment.task() instead.
-        "::get::Comment::task": {
-          url: urlBase + "/Comments/:id/task",
-          method: "GET"
-        },
       }
     );
 
@@ -2781,9 +2775,9 @@ module.factory(
       { 'id': '@id' },
       {
 
-        // INTERNAL. Use Comment.task() instead.
-        "prototype$__get__task": {
-          url: urlBase + "/Comments/:id/task",
+        // INTERNAL. Use Comment.account() instead.
+        "prototype$__get__account": {
+          url: urlBase + "/Comments/:id/account",
           method: "GET"
         },
 
@@ -3412,12 +3406,12 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Comment#task
+         * @name lbServices.Comment#account
          * @methodOf lbServices.Comment
          *
          * @description
          *
-         * Fetches belongsTo relation task.
+         * Fetches belongsTo relation account.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -3437,12 +3431,12 @@ module.factory(
          *
          * <em>
          * (The remote method definition does not provide any description.
-         * This usually means the response is a `Task` object.)
+         * This usually means the response is a `Account` object.)
          * </em>
          */
-        R.task = function() {
-          var TargetResource = $injector.get("Task");
-          var action = TargetResource["::get::Comment::task"];
+        R.account = function() {
+          var TargetResource = $injector.get("Account");
+          var action = TargetResource["::get::Comment::account"];
           return action.apply(R, arguments);
         };
 
@@ -5955,6 +5949,12 @@ module.factory(
         // INTERNAL. Use Task.account() instead.
         "::get::Task::account": {
           url: urlBase + "/Tasks/:id/account",
+          method: "GET"
+        },
+
+        // INTERNAL. Use Comment.account() instead.
+        "::get::Comment::account": {
+          url: urlBase + "/Comments/:id/account",
           method: "GET"
         },
 

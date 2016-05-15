@@ -1,6 +1,3 @@
-ion-content {
-  margin-bottom: 50px !important;
-}
 
 .no-border {
   border: none;
@@ -73,5 +70,40 @@ ion-content {
 
 .selected-btn {
   background-color: rgba(49, 51, 54, 0.38);
+}
 
+.login-list {
+  padding-top: 150px;
+}
+
+.item-input {
+  margin-bottom: 20px;
+}
+
+.error-container {
+  margin-top: -10px;
+  color: rgb(255, 62, 35)
+}
+ion-content {
+  background-color: rgba(119, 152, 255, 0.48);
+}
+
+.group-item {
+  margin: 20px 0
+}
+
+.tabs-striped.tabs-background-royal .tabs {
+  background-color: rgba(56, 126, 245, 0.63);
+  background-image: none;
+}
+
+.about {
+  margin-top: 40px
+}
+
+.about h4{
+  padding-left: 15px
+}
+ .task-area textarea {
+  width: 65%;
 }

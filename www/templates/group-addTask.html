@@ -14,28 +14,33 @@
           <input type="text" name="name" ng-model="vm.addTaskForm.name" ng-minlength="8" ng-maxlength="60" required>
         </label>
 
-        <div class="error-container" ng-show="addTaskForm.email.$error" ng-messages="addTaskForm.name.$error">
-          <div>Niepoprawna nazaw Taska</div>
+        <div class="error-container" ng-show="addTaskForm.name.$invalid && addTaskForm.$submitted">
+          <div>Invalid Task Name</div>
         </div>
 
-        <label class="item item-input" ng-class="{ 'has-errors' : addTaskForm.name.$invalid && addTaskForm.$submitted,
+        <label class="item item-input task-area" ng-class="{ 'has-errors' : addTaskForm.description.$invalid && addTaskForm.$submitted,
         'no-errors' : addTaskForm.add.$valid && addTaskForm.$submitted}">
           <span class="input-label">Description:</span>
-          <textarea type="text" name="name" ng-model="vm.addTaskForm.description" ng-minlength="10" ng-maxlength="260" rows="8" required></textarea>
+          <textarea type="text" name="description" ng-model="vm.addTaskForm.description" ng-minlength="10" ng-maxlength="260" rows="8" required></textarea>
         </label>
 
-        <div class="error-container" ng-show="addTaskForm.email.$error" ng-messages="addTaskForm.name.$error">
-          <div>Niepoprawny opis Taska</div>
+        <div class="error-container" ng-show="addTaskForm.description.$invalid && addTaskForm.$submitted">
+          <div>Invalid Task description(minimum 10 characters)</div>
         </div>
 
-        <label class="item item-input item-select">
+        <label class="item item-input item-select" ng-class="{ 'has-errors' : addTaskForm.assignedTo == undefined && addTaskForm.$submitted,
+        'no-errors' :  addTaskForm.add.$valid }">
           <div class="input-label">
             Assigned to:
           </div>
           <select ng-model="vm.addTaskForm.assignedTo" >
-            <option ng-repeat="user in vm.users">{{user.firstName}} {{user.secondName}}</option>
+            <option ng-repeat="user in vm.users" required>{{user.firstName}} {{user.secondName}}</option>
           </select>
         </label>
+
+        <div class="error-container" ng-show="addTaskForm.assignedTo === undefined && addTaskForm.$submitted" >
+          <div>Assign someone to task</div>
+        </div>
 
         <button class="button button-full button-positive" type="submit">
           Create Task

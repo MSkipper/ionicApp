@@ -4,7 +4,7 @@ angular.module('projectApp')
     var currentGroup =  groupService.getGroupId()
     var d = new Date()
     vm.add = function(form) {
-      if (form.$valid) {
+      if (form.$valid && vm.addTaskForm.assignedTo !== undefined ) {
         var newTask = {
           name: vm.addTaskForm.name,
           description: vm.addTaskForm.description,
@@ -20,7 +20,6 @@ angular.module('projectApp')
             });
 
           }, function(err){
-            console.log(err)
           })
       }
     }

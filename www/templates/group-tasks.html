@@ -20,7 +20,7 @@
           <h2 class="title">{{task.name}}</h2>
           <p>Assigned to: {{task.assignedTo}}</p>
         </div>
-        <div class="item item-body" ng-show="vm.showElement == task.id">
+        <div class="item item-body" ng-if="vm.showElement == task.id">
           <div class="button-bar">
             <a class="button" ng-class="{'selected-btn': task.status == 0}" ng-click="vm.status(0, task.id)">To do</a>
             <a class="button" ng-class="{'selected-btn': task.status == 1}" ng-click="vm.status(1, task.id)">On Going</a>
@@ -31,7 +31,7 @@
           <div>
             <div class="list card" ng-repeat="comment in vm.comments ">
               <div class="item item-avatar">
-                <img src="">
+                <img ng-src="{{comment.avatar}}">
                 <h2>Add By: {{comment.addBy}}</h2>
                 <p>Date: {{comment.dateAdd | date : format : 'shortTime'}}</p>
               </div>
@@ -41,7 +41,7 @@
             </div>
             <form name="addCommentForm" novalidate="" ng-submit="vm.addComment(addCommentForm, task.id)">
             <label class="item item-input">
-              <textarea placeholder="Comments" ng-model="vm.addCommentForm.comment"></textarea>
+              <textarea placeholder="Comments" ng-model="vm.addCommentForm.comment" rows="4"></textarea>
             </label>
               <button class="button button-full button-positive" type="submit">
                 Add Comment

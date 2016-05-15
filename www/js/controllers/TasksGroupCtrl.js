@@ -1,5 +1,5 @@
 angular.module('projectApp')
-  .controller('TasksGroupCtrl', function($scope, Group, $state, Account, Task, groupService, $ionicPopup, $location, $stateParams) {
+  .controller('TasksGroupCtrl', function($scope, $timeout, Group,Comment, $state,avatarService, Account, Task, groupService, $ionicPopup, $location, $stateParams) {
     var vm = this;
     vm.tasks = [];
     vm.tasks.empty = false
@@ -37,23 +37,27 @@ angular.module('projectApp')
         })
     };
 
+
+
     vm.showDetails = function(id){
       vm.showElement = id
       vm.comments = Task.prototype$__get__comments({id: id}).$promise
         .then(
           function(res) {
             vm.comments = res
+
           },function(err) {
           }
         )
     };
-
     vm.addComment = function(form, id){
       var user = Account.getCurrent().firstName
+      var userId = Account.getCurrentId()
       var comment = {
         content: vm.addCommentForm.comment,
         dateAdd: d,
-        addBy: String(user)
+        addBy: String(user),
+        userId: userId
       };
       Task.comments.create({id: id}, comment).$promise
         .then(

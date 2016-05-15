@@ -21,7 +21,7 @@ angular.module('projectApp')
         Group.libs.create({id: currentGroup}, lib).$promise
           .then(function(res){
             vm.addLinkForm.name = "";
-            vm.addLinkForm.name = "";
+            vm.addLinkForm.link = "";
             Group.libs({id: currentGroup}).$promise
               .then(function(res){
                 vm.libs = res
