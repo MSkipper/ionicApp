@@ -16,9 +16,8 @@ angular.module('projectApp')
           .$promise
           .then(function(res){
             $ionicPopup.alert({
-              title: "Task został stworzony"
+              title: "Task was created"
             });
-
           }, function(err){
           })
       }

@@ -37,43 +37,47 @@ angular.module('projectApp')
         })
     };
 
-
-
     vm.showDetails = function(id){
       vm.showElement = id
       vm.comments = Task.prototype$__get__comments({id: id}).$promise
         .then(
           function(res) {
             vm.comments = res
-
           },function(err) {
           }
         )
     };
+
     vm.addComment = function(form, id){
-      var user = Account.getCurrent().firstName
-      var userId = Account.getCurrentId()
-      var comment = {
-        content: vm.addCommentForm.comment,
-        dateAdd: d,
-        addBy: String(user),
-        userId: userId
-      };
-      Task.comments.create({id: id}, comment).$promise
-        .then(
-          function(res) {
-            vm.comments = res
-            vm.addCommentForm.comment = ""
-            vm.comments = Task.prototype$__get__comments({id: id}).$promise
-              .then(
-                function(res) {
-                  vm.comments = res
-                },function(err) {
-                }
-              )
-          },function(err) {
-          }
-        )
+      Account.getCurrent().$promise.then(function(res){
+        var userId = res.id
+        var user = res.firstName + " " + res.secondName
+        var avatarId = res.avatar
+        var comment = {
+          content: vm.addCommentForm.comment,
+          dateAdd: d,
+          addBy: user,
+          userId: userId,
+          avatar: avatarService.getAvatar(avatarId)
+
+        };
+        Task.comments.create({id: id}, comment).$promise
+          .then(
+            function(res) {
+              //vm.comments = res
+              vm.addCommentForm.comment = ""
+              vm.comments = Task.prototype$__get__comments({id: id}).$promise
+                .then(
+                  function(res) {
+                    vm.comments = res
+                  },function(err) {
+                  }
+                )
+            },function(err) {
+            }
+          )
+        }
+      )
     }
     return vm
   });

@@ -4,8 +4,9 @@ angular.module('projectApp')
     var userId = Account.getCurrentId()
     var getGroups = Account.prototype$__get__groups({id : userId})
 
-     getGroups.$promise.then(function (result) {
-      vm.groups = result;
+     getGroups.$promise.then(function (res) {
+
+      vm.groups = res;
     });
 
     vm.go = function (id) {

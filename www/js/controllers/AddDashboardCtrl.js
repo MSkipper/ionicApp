@@ -1,5 +1,5 @@
 angular.module('projectApp')
-  .controller('AddDashboardCtrl', function($scope, $state, Account, apiService, $ionicPopup, Group) {
+  .controller('AddDashboardCtrl', function($scope, $timeout,$location, $state, Account, $ionicPopup, Group) {
     var vm = this;
     var currentUser = Account.getCurrentId();
     var selected = [];
@@ -40,9 +40,11 @@ angular.module('projectApp')
           })
 
           $ionicPopup.alert({
-            title: "Grupa została stworzona"
+            title: "Group was created"
           });
+
           vm.addForm.name = ""
+          vm.addForm.info = ""
           $state.go('dashboard.groups');
         }
     };

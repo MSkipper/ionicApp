@@ -7,7 +7,8 @@ angular.module('projectApp')
             email: vm.authorization.email,
             password: vm.authorization.password,
             firstName: vm.authorization.name,
-            lastName: vm.authorization.surname
+            lastName: vm.authorization.surname,
+            avatar: 0
           };
           Account.create(newUser)
             .$promise

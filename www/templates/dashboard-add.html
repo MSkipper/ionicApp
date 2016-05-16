@@ -1,4 +1,4 @@
-<ion-view title="Add" ng-controller="AddDashboardCtrl as vm">
+<ion-view title="Add">
   <header class="bar bar-header bar-positive">
     <h1 class="title">Add Group</h1>
     <button ui-sref="about" class="button button-icon button-clear ion-information" >
@@ -10,28 +10,29 @@
       <div class="list">
 
         <label class="item item-input" ng-class="{ 'has-errors' : addForm.name.$invalid && addForm.$submitted,
-        'no-errors' : addForm.add.$valid && addForm.$submitted}">
+        'no-errors' : addForm.name.$valid && addForm.$submitted}">
           <span class="input-label">Name:</span>
-          <input type="text" name="name" ng-model="vm.addForm.name" ng-minlength="5" ng-maxlength="30" required>
-        </label>
-        <label class="item item-input" ng-class="{ 'has-errors' : addForm.name.$invalid && addForm.$submitted,
-        'no-errors' : addForm.add.$valid && addForm.$submitted}">
-          <span class="input-label">Description:</span>
-          <textarea type="text" name="name" ng-model="vm.addForm.info" ng-minlength="10" ng-maxlength="260" rows="8" required></textarea>
+          <input type="text" name="name" ng-model="vm.addForm.name" ng-minlength="5" ng-maxlength="30" required >
         </label>
 
-        <div class="error-container" ng-show="addForm.email.$error" ng-messages="addForm.name.$error">
-          <div>Niepoprawna nazaw grupy</div>
+        <div class="error-container" ng-show="addForm.name.$invalid && addForm.$submitted">
+          <div>Invalid Group Name</div>
         </div>
 
-        <h4>Dodaj Członków do grupy:</h4>
+        <label class="item item-input group-area" ng-class="{ 'has-errors' : addForm.info.$invalid && addForm.$submitted,
+        'no-errors' : addForm.info.$valid && addForm.$submitted}">
+          <span class="input-label">Description:</span>
+          <textarea  type="text" name="info" ng-model="vm.addForm.info" ng-minlength="10" ng-maxlength="260" rows="8" required></textarea>
+        </label>
+
+        <div class="error-container" ng-show="addForm.info.$invalid && addForm.$submitted">
+          <div>Invalid Group Description</div>
+        </div>
+
+        <h4>Add members to group:</h4>
         <div class="list listbox">
           <div class="item" ng-repeat="option in vm.options" ng-click="vm.clicked(option)" ng-class="{ active: option.selected }">{{ option.firstName }} {{option.lastName}} ({{option.email}})</div>
         </div>
-        <!--<div class="error-container last-error-container" ng-show="authorizationForm.password.$error && authorizationForm.$submitted" ng-messages="authorizationForm.password.$error">-->
-          <!--<div ng-messages-include="error-list.html"></div>-->
-        <!--</div>-->
-      <!--</div>-->
 
       <button class="button button-full button-positive" type="submit">
         Create Group

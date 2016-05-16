@@ -5,7 +5,7 @@ angular.module('projectApp')
       Account.getCurrent().$promise
         .then(function(res){
           $state.go('dashboard.groups');
-        }, function(res){
+        }, function(err){
           $state.go('login');
         })
     }

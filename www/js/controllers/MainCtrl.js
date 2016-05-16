@@ -9,7 +9,7 @@ angular.module('projectApp')
           "password": vm.authorization.password
         }, function (res) {
           $state.go('dashboard.groups');
-        }, function (res) {
+        }, function (err) {
           $ionicPopup.alert({
             title: "The data is incorrect. Please enter the correct data"
           });

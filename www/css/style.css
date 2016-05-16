@@ -104,6 +104,6 @@ ion-content {
 .about h4{
   padding-left: 15px
 }
- .task-area textarea {
+ .task-area textarea, .group-area textarea {
   width: 65%;
 }

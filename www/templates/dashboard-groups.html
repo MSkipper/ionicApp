@@ -1,4 +1,4 @@
-<ion-view title="Groups" ng-controller="GroupDashboardCtrl as vm">
+<ion-view title="Groups">
   <header class="bar bar-header bar-positive">
     <h1 class="title">Dashboard</h1>
     <button ui-sref="about" class="button button-icon button-clear ion-information" >
@@ -6,7 +6,7 @@
   </header>
   <ion-content padding="true">
     <div ng-if="vm.groups.length === 0" class="bar bar-header bar-assertive">
-      <h1 class="title">Nie jesteś zapisany w żadnej grupie</h1>
+      <h1 class="title">You are not belong to any group</h1>
     </div>
     <ion-list>
         <div class="group-item item bar bar-header bar-balanced" ng-click="vm.go(group.id)"  ng-repeat="group in vm.groups">

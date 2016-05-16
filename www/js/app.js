@@ -22,7 +22,7 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
           })
           .then(function(result) {
             if(!result) {
-              ionic.Platform.exitApp();
+              $ionicPlatform.exitApp();
             }
           });
       }
@@ -42,19 +42,20 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
       .state('login', {
         url: '/login',
         templateUrl: 'templates/login.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl as vm'
       })
 
       .state('dashboard', {
         url: '/dashboard',
         abstract: true,
         templateUrl: 'templates/dashboard.html'
+
       })
 
       .state('register', {
         url: '/register',
         templateUrl: 'templates/register.html',
-        controller: 'RegisterCtrl'
+        controller: 'RegisterCtrl  as vm'
       })
 
       .state('dashboard.groups', {
@@ -63,7 +64,7 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
         views: {
           'group-tab': {
             templateUrl: 'templates/dashboard-groups.html',
-            controller: 'GroupDashboardCtrl'
+            controller: 'GroupDashboardCtrl  as vm'
           }
         }
       })
@@ -73,7 +74,7 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
         views: {
           'add-tab': {
             templateUrl: 'templates/dashboard-add.html',
-            controller: 'AddDashboardCtrl'
+            controller: 'AddDashboardCtrl  as vm'
           }
         }
       })
@@ -84,7 +85,7 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
         views: {
           'profile-tab': {
             templateUrl: 'templates/dashboard-profile.html',
-            controller: 'ProfileDashboardCtrl'
+            controller: 'ProfileDashboardCtrl  as vm'
           }
         }
       })
@@ -101,7 +102,7 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
         views: {
           'task-tab': {
             templateUrl: 'templates/group-tasks.html',
-            controller: 'TasksGroupCtrl'
+            controller: 'TasksGroupCtrl  as vm'
           }
         }
       })
@@ -112,7 +113,7 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
         views: {
           'addTask-tab': {
             templateUrl: 'templates/group-addTask.html',
-            controller: 'AddTaskGroupCtrl'
+            controller: 'AddTaskGroupCtrl  as vm'
           }
         }
       })
@@ -123,7 +124,7 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
         views: {
           'lib-tab': {
             templateUrl: 'templates/group-lib.html',
-            controller: 'LibGroupCtrl'
+            controller: 'LibGroupCtrl  as vm'
           }
         }
       })
@@ -134,7 +135,7 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
         views: {
           'info-tab': {
             templateUrl: 'templates/group-info.html',
-            controller: 'InfoGroupCtrl'
+            controller: 'InfoGroupCtrl  as vm'
           }
         }
       })
@@ -143,7 +144,6 @@ angular.module('projectApp', ['ionic', 'LocalStorageModule', 'btford.socket-io',
         url: '/about',
         cache: true,
         templateUrl: 'templates/about.html'
-
       })
 
     // if none of the above states are matched, use this as the fallback
